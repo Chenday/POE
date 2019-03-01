@@ -27,26 +27,34 @@ public class Player : MonoBehaviour {
         float moveh = 0;
 
         // 按上键
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            movev -= m_speed * Time.deltaTime;
+            if(this.transform.position.z <= 10)
+            {
+                movev -= m_speed * Time.deltaTime;
+            }
+            
         }
 
         // 按下键
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            movev += m_speed * Time.deltaTime;
+            if(this.transform.position.z >= -19)
+            {
+                movev += m_speed * Time.deltaTime;
+            }
+            
             Debug.Log("----------->>" + movev);
         }
 
         // 按左键
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             moveh += m_speed * Time.deltaTime;
         }
 
         // 按右键
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             moveh -= m_speed * Time.deltaTime;
         }
