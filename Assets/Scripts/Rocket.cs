@@ -34,4 +34,12 @@ public class Rocket : MonoBehaviour {
         m_transform.Translate(new Vector3(0, 0, -m_speed * Time.deltaTime));
 	
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag.CompareTo("Enemy") == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

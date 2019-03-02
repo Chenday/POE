@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float m_speed = 1;
 
     public float m_rocketRate = 0.5f;
+    protected float m_rRate;
 
     public Transform m_rocket;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_transform = this.transform;
+        m_rRate = m_rocketRate;
 	}
 
     // Update is called once per frame
@@ -62,10 +64,10 @@ public class Player : MonoBehaviour {
         // 移动
         this.transform.Translate(new Vector3(moveh, 0, movev));
 
-        m_rocketRate -= Time.deltaTime;
-        if(m_rocketRate <= 0)
+        m_rRate -= Time.deltaTime;
+        if(m_rRate <= 0)
         {
-            m_rocketRate = 0.5f;
+            m_rRate = m_rocketRate;
 
             // 创建子弹
             if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
@@ -76,4 +78,12 @@ public class Player : MonoBehaviour {
         }
         
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+         if (other.CompareTag("Enemy"))
+         {
+             Destroy(this.gameObject);
+         }
+    }
 }
