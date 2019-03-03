@@ -18,17 +18,7 @@ public class Boss : Enemy {
             m_player = obj.transform;
         }
     }
-
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public override void UpdateMove()
     {
         m_fTimer -= Time.deltaTime;

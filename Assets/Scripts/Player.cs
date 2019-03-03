@@ -10,6 +10,17 @@ public class Player : MonoBehaviour {
     public float m_rocketRate = 0.5f;
     protected float m_rRate;
 
+    // 声音
+    public AudioClip m_shootClip;
+
+    // 声音源
+    protected AudioSource m_audio;
+
+    // 爆炸特效
+    public Transform m_explosionFx;
+
+    public int m_life;
+
     public Transform m_rocket;
 
     protected Transform m_transform;
@@ -17,6 +28,8 @@ public class Player : MonoBehaviour {
     void Start () {
         m_transform = this.transform;
         m_rRate = m_rocketRate;
+
+        m_audio = this.audio;
 	}
 
     // Update is called once per frame
@@ -73,6 +86,9 @@ public class Player : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
                 Instantiate(m_rocket, m_transform.position, m_transform.rotation);
+
+                // 播放射击声音
+                m_audio.PlayOneShot(m_shootClip);
             }
 
         }
@@ -83,7 +99,14 @@ public class Player : MonoBehaviour {
     {
          if (other.CompareTag("Enemy"))
          {
+            Instantiate(m_explosionFx, m_transform.position, m_transform.rotation);
              Destroy(this.gameObject);
          }
+
+        if (other.CompareTag("EnemyRocket"))
+        {
+            Instantiate(m_explosionFx, m_transform.position, m_transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 }

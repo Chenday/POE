@@ -3,13 +3,13 @@ using System.Collections;
 
 public class EnemyRocket : Rocket {
 
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.CompareTo("Player") == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

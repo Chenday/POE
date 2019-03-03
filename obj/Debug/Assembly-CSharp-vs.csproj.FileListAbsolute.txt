@@ -1,0 +1,4 @@
+F:\U3DDemon\POE\obj\Debug\Assembly-CSharp-vs.csprojAssemblyReference.cache
+F:\U3DDemon\POE\obj\Debug\Assembly-CSharp-vs.csproj.CoreCompileInputs.cache
+F:\U3DDemon\POE\obj\Debug\Assembly-CSharp.dll
+F:\U3DDemon\POE\obj\Debug\Assembly-CSharp.pdb

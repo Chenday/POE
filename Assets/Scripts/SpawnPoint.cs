@@ -33,4 +33,9 @@ public class SpawnPoint : MonoBehaviour {
             Instantiate(m_spawnObject, m_traceform.position, m_traceform.rotation);
         }
 	}
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position, "item.png", true);
+    }
 }

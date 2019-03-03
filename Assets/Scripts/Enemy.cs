@@ -10,12 +10,16 @@ public class Enemy : MonoBehaviour {
     // 旋转速度
     public float m_rotSpeed = 30f;
 
+    // 获得分数
+    public int m_point = 1;
+
     public int m_flood = 2;
 
     // 变向间隔时间
     protected float m_timer = 1.5f;
 
     protected Transform m_transform;
+    public Transform m_explosionFx;
 
 
 	// Use this for initialization
@@ -59,6 +63,10 @@ public class Enemy : MonoBehaviour {
             m_flood -= 1;
             if(m_flood <= 0)
             {
+                GameManager.instance.AddScore(m_point);
+
+                Instantiate(m_explosionFx, m_transform.position, Quaternion.identity);
+
                 Destroy(this.gameObject);
             }
         }
