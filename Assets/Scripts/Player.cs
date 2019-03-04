@@ -105,8 +105,13 @@ public class Player : MonoBehaviour {
 
         if (other.CompareTag("EnemyRocket"))
         {
-            Instantiate(m_explosionFx, m_transform.position, m_transform.rotation);
-            Destroy(this.gameObject);
+            m_life -= 1;
+            if(m_life <= 0)
+            {
+                Instantiate(m_explosionFx, m_transform.position, m_transform.rotation);
+                Destroy(this.gameObject);
+            }
+
         }
     }
 }

@@ -5,6 +5,8 @@ public class SpawnPoint : MonoBehaviour {
 
     public Transform m_spawnObject;
 
+    public Transform m_spawnBoss;
+
     public float m_minSpawnTime = 1.0f;
 
     public float m_maxSpawnTime = 5.0f;
@@ -30,7 +32,16 @@ public class SpawnPoint : MonoBehaviour {
         if(m_limitTime <= 0)
         {
             m_limitTime = Random.Range(m_minSpawnTime, m_maxSpawnTime);
-            Instantiate(m_spawnObject, m_traceform.position, m_traceform.rotation);
+            if(Random.Range(0f,0.9f) >= 0.5)
+            {
+                Instantiate(m_spawnBoss, m_traceform.position, m_traceform.rotation);
+            }
+            else
+            {
+                Instantiate(m_spawnObject, m_traceform.position, m_traceform.rotation);
+            }
+ 
+            
         }
 	}
 
